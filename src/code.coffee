@@ -1,9 +1,9 @@
-archiveRead = ->
-  GmailApp.moveThreadsToArchive GmailApp.search('label:inbox -label:unread -label:starred', 0, 100)
+archiveThreads = (search)->
+  GmailApp.moveThreadsToArchive GmailApp.search(search, 0, 100)
   return
 
-unstarOld = ->
-  threads = GmailApp.search('older_than:1y AND is:starred', 0, 100)
+unstarThreads = (search)->
+  threads = GmailApp.search(search, 0, 100)
   Logger.log threads[1].getMessages()
   i = 0
   len = threads.length
